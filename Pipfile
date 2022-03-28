@@ -5,11 +5,11 @@ name = "pypi"
 
 [packages]
 django = "*"
+gunicorn = "*"
+whitenoise = "*"
 mysqlclient = "*"
 pillow = "*"
 django-cleanup = "*"
-gunicorn = "*"
-whitenoise = "*"
 [dev-packages]
 
 [requires]
