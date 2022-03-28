@@ -9,7 +9,7 @@ mysqlclient = "*"
 pillow = "*"
 django-cleanup = "*"
 gunicorn = "*"
-
+whitenoise = "*"
 [dev-packages]
 
 [requires]
