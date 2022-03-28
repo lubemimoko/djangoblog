@@ -1,0 +1,45 @@
+{% extends 'BlogApp/base.html' %}
+{% block body %}
+    <div class="row tm-row">
+                    <div class="col-12">
+                        <hr class="tm-hr-primary tm-mb-55">
+                        <!-- Video player 1422x800 -->
+                        <img src="{{post.pic.url}}">
+                    </div>
+                </div>
+                <div class="row tm-row">
+                    <div class="col-lg-8 tm-post-col">
+                        <div class="tm-post-full">                    
+                            <div class="mb-4">
+                                <h2 class="pt-2 tm-color-primary tm-post-title">{{ post.title }}</h2>
+                                <p class="tm-mb-40">{{post.datetime|date:"M d, Y"}} posted by Admin Nat</p>
+                                <p>
+                                    {{post.body}}
+                                </p>
+                                <span class="d-block text-right tm-color-primary">
+                                    {% for tag in tags %}
+                                        #{{ tag.name }}.                                     
+                                    {% endfor %}
+
+                                </span>
+                            </div>
+
+
+            {% include "BlogApp/component/comment.html" %}
+            
+            <aside class="col-lg-4 tm-aside-col">
+                        <div class="tm-post-sidebar">
+                            <hr class="mb-3 tm-hr-primary">
+                            <h2 class="tm-mb-40 tm-post-title tm-color-primary">Related Posts</h2>
+                            {% for p in catPosts %}
+                                <a href="{% url 'fullpost' slug=p.slug %}" class="d-block tm-mb-40">
+                                    <figure>
+                                        <img src="{{ p.pic.url }}" alt="Image" class="mb-3 img-fluid">
+                                        <figcaption class="tm-color-primary">{{ p.title }}</figcaption>
+                                    </figure>
+                                </a>
+                            {% endfor %}
+                        </div>                    
+                    </aside>
+                </div>
+{% endblock body %}        

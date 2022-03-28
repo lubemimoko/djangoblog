@@ -1,0 +1,49 @@
+                        
+                        <!-- Comments -->
+                        <div>
+                            <h2 class="tm-color-primary tm-post-title">Comments</h2>
+                            
+                            {% for comment in comments %}
+                                <hr class="tm-hr-primary tm-mb-45">
+
+                                <div class="tm-comment tm-mb-45">
+                                    <figure class="tm-comment-figure">
+                                        <img src="{{ comment.pic.url }}" alt="Image" class="mb-2 rounded-circle img-thumbnail">
+                                        <figcaption class="tm-color-primary text-center">{{ comment.name }}</figcaption>
+                                    </figure>
+                                    <div>
+                                        <p>
+                                            {{comment.body}}
+                                        </p>
+                                        <div class="d-flex justify-content-between">
+                                            <a href="#" class="tm-color-primary"></a>
+                                            <span class="tm-color-primary">{{ comment.datetime|date:"M d, Y" }}</span>
+                                        </div>                                                 
+                                    </div>                                
+                                </div>
+                                {% endfor %}
+                            <form method="post" action="{% url 'fullpost' slug=post.slug %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                {% comment %} <h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
+                                    <div class="mb-4">
+                                        <input class="form-control" placeholder="Name" name="name" type="text">
+                                        <input name="post" value="{{ post.id }}" type="hidden">
+                                    </div>
+                                    <div class="mb-4">
+                                        <input type="file" name="pic">
+                                    </div>
+                                    <div class="mb-4">
+                                        <textarea class="form-control" name="body" rows="6"></textarea>
+                                    </div> 
+                             {% endcomment %}
+                                <div class="text-right">
+                                    <button class="tm-btn tm-btn-primary tm-btn-small">Submit</button>                        
+                                </div>                                
+
+
+                            </form>                          
+                        </div>
+                    </div>
+                </div>
+       
